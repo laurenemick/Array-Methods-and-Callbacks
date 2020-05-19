@@ -6,15 +6,82 @@ console.log('its working');
 
 /* Task 1: Investigate the data above. Practice accessing data by console.log-ing the following pieces of data 
 
-(a) Home Team name for 2014 world cup final
+(a) Home Team name for 2014 world cup final 
 (b) Away Team name for 2014 world cup final
 (c) Home Team goals for 2014 world cup final
 (d) Away Team goals for 2014 world cup final
 (e) Winner of 2014 world cup final */
 
+// console.log(fifaData);
+
+/*const twentyFourteenArr = [];
+
+function gettwentyFourteen(arr){
+    for(let i = 0; i < arr.length; i++) {
+        if (arr[i].Year === 2014){
+            twentyFourteenArr.push(arr[i]);
+        }
+    }
+}
+gettwentyFourteen(fifaData);
+console.log(twentyFourteenArr);*/
+
+const twentyFourteenArr = [];
+
+fifaData.forEach(function(element){
+    if (element.Year === 2014){
+        return twentyFourteenArr.push(element);
+    }
+});
+console.log(twentyFourteenArr);
+
+// (a)
+const homeTeamName = twentyFourteenArr.map(function(item){
+    return item["Home Team Name"];
+});
+console.log(homeTeamName);
+
+//(b)
+const awayTeamName = twentyFourteenArr.map(function(item){
+    return item["Away Team Name"];
+});
+console.log(awayTeamName);
+
+//(c)
+const homeTeamGoals = twentyFourteenArr.map(function(item){
+    return item["Home Team Goals"];
+});
+console.log(homeTeamGoals);
+
+//(d)
+const awayTeamGoals = twentyFourteenArr.map(function(item){
+    return item["Away Team Goals"];
+});
+console.log(awayTeamGoals);
+
+//(e)
+const twentyFourteenFinals = [];
+
+twentyFourteenArr.forEach(function(element){
+    if (element.Stage === "Final"){
+        return twentyFourteenFinals.push(element);
+    }
+});
+
+const twentyFourteenWinner = twentyFourteenFinals.map(function(item){
+    if(item["Home Team Goals"] > item["Away Team Goals"]) {
+        return item["Home Team Name"];
+    } else {
+        return item["Away Team Name"];
+    }
+});
+
+console.log(twentyFourteenWinner);
+
+
+
 
 /* Task 2: Create a function called  getFinals that takes `data` as an argument and returns an array of objects with only finals data */
-
 function getFinals(/* code here */) {
 
     /* code here */
@@ -63,6 +130,10 @@ function getAverageGoals(/* code here */) {
 };
 
 getAverageGoals();
+
+
+
+
 
 /// STRETCH 🥅 //
 
